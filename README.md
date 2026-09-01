@@ -9,4 +9,7 @@
       <td valign="top"><img src="./info-card.svg" width="490" /></td>
     </tr>
   </table>
+  <br>
+  <h3><code>julianotx@github ~ $ cat skills.json</code></h3>
+  <img src="./tech-stack.svg" width="860" />
 </div>
