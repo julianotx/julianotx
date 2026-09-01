@@ -64,7 +64,13 @@ def create_ascii_svg(lines: list, output_path: str = "avi-ascii.svg"):
     content_w = cols * char_w
     content_h = rows * line_h
     svg_w = int(content_w + pad_x * 2)
-    svg_h = int(content_h + pad_top + pad_bottom)
+
+    # Match rendered height with info-card (490x480 at width=490 → 480px)
+    # ASCII displays at width=370, so: target_h * svg_w / 370 = needed viewBox height
+    # 480 * svg_w / 370 = viewBox height
+    target_rendered_h = 480
+    display_w = 370
+    svg_h = int(target_rendered_h * svg_w / display_w)
 
     stagger = 0.038
     duration = 0.22
