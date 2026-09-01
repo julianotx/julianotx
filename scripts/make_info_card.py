@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """
 scripts/make_info_card.py
-Gera o SVG de informações do perfil no estilo neofetch (info-card.svg).
-- Barra de título de terminal com botões coloridos
-- Prompt interativo: julianotx@github ~ $ neofetch
-- Dados reais: Now, Prev, Stack, Highlights, OS, etc.
-- Paleta de blocos de cor ANSI do terminal (███)
-- Animação staggered de fade + slide-in
-- Suporte a flag de ambiente STATIC=1 para versão congelada sem animação
-- Salva como info-card.svg na raiz
+Generates the neofetch-style profile information card SVG (info-card.svg).
+- Terminal title bar with colored buttons
+- Interactive prompt: julianotx@github ~ $ neofetch --profile
+- Professional English profile details (System Analyst & Full Stack Developer, Associate Degree in System Analysis and Development)
+- ANSI terminal color palette blocks (███)
+- Staggered slide-in and fade animation
+- Support for STATIC=1 environment variable for static rendering
 """
 
 import os
@@ -19,45 +18,47 @@ def generate_info_card_svg(output_path: str = "info-card.svg", is_static: bool =
     svg_w = 680
     svg_h = 570
 
-    # Itens do Neofetch com dados autênticos do usuário
+    # Structured Neofetch data items in professional English
     data_items = [
         ("title", "julianotx@github", "#58a6ff"),
         ("sep", "-" * 42, "#30363d"),
         ("OS", "GitHub / Windows 11 x86_64", "#79c0ff"),
-        ("Host", "julianotx.dev (Portfolio Terminal)", "#79c0ff"),
-        ("Now", "Analista de Sistemas / Dados em transição para BI", "#7ee787"),
-        ("Prev", "Prevenção de Perdas (Magalog) | Conf. de Carga (GFL)", "#d29922"),
-        ("Stack", "Next.js, TypeScript, Supabase, PostgreSQL, Python, Power BI, SQL", "#a371f7"),
-        ("Highlights", "Formado em ADS (Anhanguera, 2026) | Automação & No-Code", "#f0883e"),
-        ("Uptime", "Curioso incansável, focado em impacto & produto", "#58a6ff"),
+        ("Host", "julianotx.vercel.app (Portfolio)", "#79c0ff"),
+        ("Role", "System Analyst & Full Stack Developer", "#7ee787"),
+        ("Degree", "Associate Degree in System Analysis & Dev (2026)", "#d29922"),
+        ("Location", "São Paulo, SP - Brazil", "#79c0ff"),
+        ("Stack", "Next.js, TypeScript, React, Supabase, PostgreSQL, Python, SQL", "#a371f7"),
+        ("Prev", "Loss Prevention Analyst (Magalog) | Cargo Logistics (GFL)", "#f0883e"),
+        ("Focus", "Full-Stack Web Apps, Data Pipelines & Automation", "#58a6ff"),
+        ("Uptime", "Passionate about building scalable systems & great UX", "#79c0ff"),
         ("Shell", "pwsh 7.6.5 with oh-my-posh", "#79c0ff"),
-        ("Status", "Aberto a novas oportunidades em BI & Engenharia de Dados", "#56d364"),
+        ("Status", "Open to Software Engineering & Analyst Opportunities", "#56d364"),
     ]
 
-    # Blocos de cor ANSI padrão neofetch
+    # ANSI Color Blocks (classic neofetch accent)
     ansi_colors_1 = ["#0d1117", "#ff7b72", "#7ee787", "#f2cc60", "#79c0ff", "#d2a8ff", "#56d364", "#c9d1d9"]
     ansi_colors_2 = ["#484f58", "#ffa198", "#56d364", "#e3b341", "#a5d6ff", "#e2c5ff", "#39d353", "#f0f6fc"]
 
-    start_delay = 0.15
-    stagger = 0.08
-    duration = 0.35
+    start_delay = 0.12
+    stagger = 0.065
+    duration = 0.32
 
     css_rules = ["""
-      .card-bg { fill: #0d1117; stroke: #30363d; stroke-width: 1.5; rx: 10px; }
-      .card-header { fill: #161b22; }
-      .header-title { fill: #8b949e; font-family: 'Segoe UI', -apple-system, sans-serif; font-size: 11px; font-weight: 500; }
-      .mono-font {
+      .card-bg {{ fill: #0d1117; stroke: #30363d; stroke-width: 1.5; rx: 10px; }}
+      .card-header {{ fill: #161b22; }}
+      .header-title {{ fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; font-weight: 500; }}
+      .mono-font {{
         font-family: 'Consolas', 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
-        font-size: 12.5px;
-      }
-      .prompt-user { fill: #58a6ff; font-weight: 600; }
-      .prompt-at { fill: #8b949e; }
-      .prompt-host { fill: #bc8cff; font-weight: 600; }
-      .prompt-dir { fill: #7ee787; }
-      .prompt-cmd { fill: #f0f6fc; }
-      .label-key { fill: #58a6ff; font-weight: 600; }
-      .label-colon { fill: #8b949e; }
-      .label-val { fill: #c9d1d9; }
+        font-size: 12.2px;
+      }}
+      .prompt-user {{ fill: #58a6ff; font-weight: 600; }}
+      .prompt-at {{ fill: #8b949e; }}
+      .prompt-host {{ fill: #bc8cff; font-weight: 600; }}
+      .prompt-dir {{ fill: #7ee787; }}
+      .prompt-cmd {{ fill: #f0f6fc; }}
+      .label-key {{ fill: #58a6ff; font-weight: 600; }}
+      .label-colon {{ fill: #8b949e; }}
+      .label-val {{ fill: #c9d1d9; }}
     """]
 
     if not is_static:
@@ -68,14 +69,14 @@ def generate_info_card_svg(output_path: str = "info-card.svg", is_static: bool =
       }
       .animated-row {
         opacity: 0;
-        animation: slideInFade 0.35s cubic-bezier(0.2, 0.0, 0.35, 1) forwards;
+        animation: slideInFade 0.32s cubic-bezier(0.2, 0.0, 0.35, 1) forwards;
       }
         """)
 
     body_elements = []
 
-    # Linha do Prompt
-    prompt_y = 65
+    # Prompt Row
+    prompt_y = 60
     prompt_delay = start_delay
     delay_style = f"style=\"animation-delay: {prompt_delay:.2f}s;\"" if not is_static else ""
     anim_class = "animated-row" if not is_static else ""
@@ -99,9 +100,9 @@ def generate_info_card_svg(output_path: str = "info-card.svg", is_static: bool =
       </text>
     </g>""")
 
-    # Linhas dos Itens
-    cur_y = 100
-    line_step = 28
+    # Data Rows
+    cur_y = 92
+    line_step = 25
 
     for idx, (key, val, col) in enumerate(data_items):
         item_delay = start_delay + (idx + 1) * stagger
@@ -116,11 +117,11 @@ def generate_info_card_svg(output_path: str = "info-card.svg", is_static: bool =
         if key == "title":
             row_html = f"""
     <g class="{anim_class}" {delay_style}>{smil_item}
-      <text x="24" y="{cur_y}" class="mono-font" font-weight="700" font-size="14px" fill="{col}">
+      <text x="24" y="{cur_y}" class="mono-font" font-weight="700" font-size="13.5px" fill="{col}">
         {html.escape(val)}
       </text>
     </g>"""
-            cur_y += 20
+            cur_y += 18
         elif key == "sep":
             row_html = f"""
     <g class="{anim_class}" {delay_style}>{smil_item}
@@ -128,9 +129,8 @@ def generate_info_card_svg(output_path: str = "info-card.svg", is_static: bool =
         {html.escape(val)}
       </text>
     </g>"""
-            cur_y += 24
+            cur_y += 21
         else:
-            # Quebra inteligente para itens longos (como Stack e Prev) para não transbordar o card
             escaped_val = html.escape(val)
             row_html = f"""
     <g class="{anim_class}" {delay_style}>{smil_item}
@@ -144,7 +144,7 @@ def generate_info_card_svg(output_path: str = "info-card.svg", is_static: bool =
 
         body_elements.append(row_html)
 
-    # Blocos de Cor ANSI (Neofetch color blocks)
+    # ANSI Color Blocks
     blocks_delay = start_delay + (len(data_items) + 2) * stagger
     delay_style = f"style=\"animation-delay: {blocks_delay:.2f}s;\"" if not is_static else ""
     smil_blocks = ""
@@ -204,8 +204,8 @@ def generate_info_card_svg(output_path: str = "info-card.svg", is_static: bool =
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(svg_content)
 
-    status_str = "estático" if is_static else "animado"
-    print(f"[+] Info Card SVG ({status_str}) gerado com sucesso: {output_path} ({svg_w}x{svg_h})")
+    status_str = "static" if is_static else "animated"
+    print(f"[+] Info Card SVG ({status_str}) generated successfully: {output_path} ({svg_w}x{svg_h})")
 
 def main():
     is_static = os.environ.get("STATIC", "0").lower() in ("1", "true", "yes")
