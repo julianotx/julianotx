@@ -35,94 +35,104 @@
         <tspan fill="#c9d1d9">:</tspan>
         <tspan fill="#7ee787">~</tspan>
         <tspan fill="#c9d1d9"> $ </tspan>
-        <tspan fill="#f0f6fc">neofetch</tspan>
+        <tspan fill="#f0f6fc">neofetch --profile</tspan>
       </text>
     </g>
     <g class="anim" style="animation: slideIn 0.28s ease 0.15s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.15s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.15s" fill="freeze"/>
       <text x="20" y="84" font-weight="700" font-size="13px" fill="#58a6ff">julianotx@github</text>
     </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.21s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.21s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.21s" fill="freeze"/>
-      <text x="20" y="100" fill="#30363d">----------------------------------</text>
+    <g class="anim" style="animation: slideIn 0.28s ease 0.20s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.20s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.20s" fill="freeze"/>
+      <text x="20" y="101" fill="#30363d">------------------------------------</text>
     </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.27s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.27s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.27s" fill="freeze"/>
-      <text x="20" y="118">
+    <g class="anim" style="animation: slideIn 0.28s ease 0.25s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.25s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.25s" fill="freeze"/>
+      <text x="20" y="120">
         <tspan fill="#79c0ff" font-weight="600">OS</tspan>
         <tspan fill="#8b949e"> : </tspan>
-        <tspan fill="#c9d1d9">GitHub / Windows 11 x86_64</tspan>
+        <tspan fill="#c9d1d9">Windows 11 IoT Enterprise / Arch Linux</tspan>
       </text>
     </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.32s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.32s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.32s" fill="freeze"/>
-      <text x="20" y="141">
+    <g class="anim" style="animation: slideIn 0.28s ease 0.30s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.30s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.30s" fill="freeze"/>
+      <text x="20" y="144">
+        <tspan fill="#79c0ff" font-weight="600">Host</tspan>
+        <tspan fill="#8b949e"> : </tspan>
+        <tspan fill="#c9d1d9">julianotx.vercel.app (Portfolio)</tspan>
+      </text>
+    </g>
+    <g class="anim" style="animation: slideIn 0.28s ease 0.35s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.35s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.35s" fill="freeze"/>
+      <text x="20" y="168">
         <tspan fill="#7ee787" font-weight="600">Role</tspan>
         <tspan fill="#8b949e"> : </tspan>
         <tspan fill="#c9d1d9">System Analyst &amp; Full Stack Developer</tspan>
       </text>
     </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.38s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.38s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.38s" fill="freeze"/>
-      <text x="20" y="164">
+    <g class="anim" style="animation: slideIn 0.28s ease 0.40s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.40s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.40s" fill="freeze"/>
+      <text x="20" y="192">
         <tspan fill="#d29922" font-weight="600">Degree</tspan>
         <tspan fill="#8b949e"> : </tspan>
-        <tspan fill="#c9d1d9">Associate Degree in System Analysis &amp; Dev</tspan>
+        <tspan fill="#c9d1d9">Associate Degree in System Analysis &amp; Dev (2026)</tspan>
       </text>
     </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.43s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.43s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.43s" fill="freeze"/>
-      <text x="20" y="187">
+    <g class="anim" style="animation: slideIn 0.28s ease 0.45s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.45s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.45s" fill="freeze"/>
+      <text x="20" y="216">
         <tspan fill="#79c0ff" font-weight="600">Location</tspan>
         <tspan fill="#8b949e"> : </tspan>
         <tspan fill="#c9d1d9">Sao Paulo, SP - Brazil</tspan>
       </text>
     </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.48s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.48s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.48s" fill="freeze"/>
-      <text x="20" y="210">
+    <g class="anim" style="animation: slideIn 0.28s ease 0.50s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.50s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.50s" fill="freeze"/>
+      <text x="20" y="240">
         <tspan fill="#a371f7" font-weight="600">Stack</tspan>
         <tspan fill="#8b949e"> : </tspan>
-        <tspan fill="#c9d1d9">Next.js, TS, React, Supabase, Python, SQL</tspan>
+        <tspan fill="#c9d1d9">Next.js, TypeScript, React, Supabase, Python, SQL</tspan>
       </text>
     </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.54s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.54s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.54s" fill="freeze"/>
-      <text x="20" y="233">
+    <g class="anim" style="animation: slideIn 0.28s ease 0.55s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.55s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.55s" fill="freeze"/>
+      <text x="20" y="264">
         <tspan fill="#58a6ff" font-weight="600">Focus</tspan>
         <tspan fill="#8b949e"> : </tspan>
-        <tspan fill="#c9d1d9">Full-Stack Apps, Data Pipelines &amp; Automation</tspan>
+        <tspan fill="#c9d1d9">Full-Stack Web Apps, Data Pipelines &amp; Automation</tspan>
       </text>
     </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.59s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.59s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.59s" fill="freeze"/>
-      <text x="20" y="256">
+    <g class="anim" style="animation: slideIn 0.28s ease 0.60s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.60s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.60s" fill="freeze"/>
+      <text x="20" y="288">
+        <tspan fill="#79c0ff" font-weight="600">Uptime</tspan>
+        <tspan fill="#8b949e"> : </tspan>
+        <tspan fill="#c9d1d9">Building scalable systems &amp; great user experiences</tspan>
+      </text>
+    </g>
+    <g class="anim" style="animation: slideIn 0.28s ease 0.65s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.65s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.65s" fill="freeze"/>
+      <text x="20" y="312">
         <tspan fill="#79c0ff" font-weight="600">Shell</tspan>
         <tspan fill="#8b949e"> : </tspan>
         <tspan fill="#c9d1d9">pwsh 7.6.5 + oh-my-posh</tspan>
       </text>
     </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.65s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.65s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.65s" fill="freeze"/>
-      <text x="20" y="279">
+    <g class="anim" style="animation: slideIn 0.28s ease 0.70s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.70s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.70s" fill="freeze"/>
+      <text x="20" y="336">
         <tspan fill="#7ee787" font-weight="600">Repos</tspan>
         <tspan fill="#8b949e"> : </tspan>
         <tspan fill="#c9d1d9">1</tspan>
       </text>
     </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.70s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.70s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.70s" fill="freeze"/>
-      <text x="20" y="302">
+    <g class="anim" style="animation: slideIn 0.28s ease 0.75s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.75s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.75s" fill="freeze"/>
+      <text x="20" y="360">
         <tspan fill="#f2cc60" font-weight="600">Stars</tspan>
         <tspan fill="#8b949e"> : </tspan>
         <tspan fill="#c9d1d9">15</tspan>
       </text>
     </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.76s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.76s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.76s" fill="freeze"/>
-      <text x="20" y="325">
+    <g class="anim" style="animation: slideIn 0.28s ease 0.80s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.80s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.80s" fill="freeze"/>
+      <text x="20" y="384">
         <tspan fill="#d2a8ff" font-weight="600">Followers</tspan>
         <tspan fill="#8b949e"> : </tspan>
         <tspan fill="#c9d1d9">3</tspan>
       </text>
     </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.81s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.81s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.81s" fill="freeze"/>
-      <text x="20" y="348">
+    <g class="anim" style="animation: slideIn 0.28s ease 0.85s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.85s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.85s" fill="freeze"/>
+      <text x="20" y="408">
         <tspan fill="#56d364" font-weight="600">Status</tspan>
         <tspan fill="#8b949e"> : </tspan>
-        <tspan fill="#c9d1d9">Open to new opportunities</tspan>
+        <tspan fill="#c9d1d9">Open to Software Engineering &amp; Analyst roles</tspan>
       </text>
-    </g>
-    <g class="anim" style="animation: slideIn 0.28s ease 0.92s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.92s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.92s" fill="freeze"/>
-      <rect x="20" y="383" width="22" height="12" rx="2" fill="#0d1117"/> <rect x="46" y="383" width="22" height="12" rx="2" fill="#ff7b72"/> <rect x="72" y="383" width="22" height="12" rx="2" fill="#7ee787"/> <rect x="98" y="383" width="22" height="12" rx="2" fill="#f2cc60"/> <rect x="124" y="383" width="22" height="12" rx="2" fill="#79c0ff"/> <rect x="150" y="383" width="22" height="12" rx="2" fill="#d2a8ff"/> <rect x="176" y="383" width="22" height="12" rx="2" fill="#56d364"/> <rect x="202" y="383" width="22" height="12" rx="2" fill="#c9d1d9"/>
-      <rect x="20" y="398" width="22" height="12" rx="2" fill="#484f58"/> <rect x="46" y="398" width="22" height="12" rx="2" fill="#ffa198"/> <rect x="72" y="398" width="22" height="12" rx="2" fill="#56d364"/> <rect x="98" y="398" width="22" height="12" rx="2" fill="#e3b341"/> <rect x="124" y="398" width="22" height="12" rx="2" fill="#a5d6ff"/> <rect x="150" y="398" width="22" height="12" rx="2" fill="#e2c5ff"/> <rect x="176" y="398" width="22" height="12" rx="2" fill="#39d353"/> <rect x="202" y="398" width="22" height="12" rx="2" fill="#f0f6fc"/>
     </g>
 </svg>

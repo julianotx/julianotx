@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
 scripts/make_ascii_svg.py
-Gera o SVG animado do retrato em arte ASCII (avi-ascii.svg).
-- Reamostra source-prepped.png para uma grade de ~96x53 caracteres
-- Mapeia com a rampa: RAMP = " .:-=+*cs#%@"
-- Monocromático (cinza claro #c9d1d9 sobre terminal #0d1117)
-- Efeito digitando progressivo via clipPath animado (SMIL + CSS keyframes)
-- Toca uma única vez e congela (sem loop)
+Generates the animated ASCII portrait SVG (avi-ascii.svg).
+- Resamples source-prepped.png into a ~96x56 character grid
+- Density ramp: RAMP = " .:-=+*cs#%@"
+- Monochromatic light gray on dark terminal (#0d1117)
+- Perfectly centered horizontally and vertically within the terminal window
+- Staggered typing reveal animation (SMIL + CSS keyframes)
+- Matches exact rendered height of info-card (480px) for symmetry
 """
 
 import sys
@@ -18,20 +19,25 @@ from PIL import Image
 
 RAMP = " .:-=+*cs#%@"
 
-def generate_ascii_art(image_path: str, cols: int = 96, rows: int = 53):
+
+def generate_ascii_art(image_path: str, cols: int = 96, rows: int = 56):
     img = Image.open(image_path)
     
-    # Detecção inteligente da caixa delimitadora do conteúdo
+    # Accurate bounding box detection and centering
     arr_full = np.array(img)
     non_white = np.where(arr_full < 250)
     if len(non_white[0]) > 0:
-        min_y = max(0, int(non_white[0].min()) - 25)
+        min_y = max(0, int(non_white[0].min()) - 20)
         max_y = int(non_white[0].max())
-        img_cropped = img.crop((0, min_y, img.size[0], max_y))
+        min_x = int(non_white[1].min())
+        max_x = int(non_white[1].max())
+        
+        # Crop precisely around content
+        img_cropped = img.crop((min_x, min_y, max_x, max_y))
     else:
         img_cropped = img
 
-    # Reamostragem com interpolação LANCZOS de alta qualidade
+    # High quality LANCZOS resampling
     small = img_cropped.resize((cols, rows), Image.Resampling.LANCZOS)
     arr = np.array(small)
     ramp_len = len(RAMP)
@@ -41,8 +47,6 @@ def generate_ascii_art(image_path: str, cols: int = 96, rows: int = 53):
         line_chars = []
         for c in range(cols):
             val = int(arr[r, c])
-            # val = 255 (fundo branco) -> 0 (espaço)
-            # val = 0 (escuro) -> ramp_len - 1 (@)
             idx = int((255 - val) / 255.0 * (ramp_len - 1))
             idx = max(0, min(ramp_len - 1, idx))
             line_chars.append(RAMP[idx])
@@ -50,57 +54,57 @@ def generate_ascii_art(image_path: str, cols: int = 96, rows: int = 53):
 
     return lines
 
+
 def create_ascii_svg(lines: list, output_path: str = "avi-ascii.svg"):
     rows = len(lines)
     cols = len(lines[0])
 
-    # Dimensões da célula de caractere (monospace)
-    char_w = 5.6
-    line_h = 10.8
-    pad_x = 18
-    pad_top = 44
-    pad_bottom = 20
+    # Monospace character dimensions
+    char_w = 5.5
+    line_h = 11.2
 
     content_w = cols * char_w
     content_h = rows * line_h
-    svg_w = int(content_w + pad_x * 2)
 
-    # Match rendered height with info-card (490x480 at width=490 → 480px)
-    # ASCII displays at width=370, so: target_h * svg_w / 370 = needed viewBox height
-    # 480 * svg_w / 370 = viewBox height
+    svg_w = 573
     target_rendered_h = 480
     display_w = 370
-    svg_h = int(target_rendered_h * svg_w / display_w)
+    svg_h = int(target_rendered_h * svg_w / display_w)  # 743px
 
-    stagger = 0.038
-    duration = 0.22
+    # Calculate exact horizontal and vertical centering
+    pad_x = (svg_w - content_w) / 2
+    header_h = 30
+    avail_h = svg_h - header_h
+    pad_top = header_h + int((avail_h - content_h) / 2) + 2
 
-    # Construção do CSS e SMIL
+    stagger = 0.035
+    duration = 0.20
+
     css_rules = []
     clips = []
     text_elements = []
 
-    css_rules.append("""
-      @keyframes revealWidth {
-        0% { width: 0px; }
-        100% { width: __CW__px; }
-      }
-      .term-bg { fill: #0d1117; stroke: #30363d; stroke-width: 1.5; rx: 10px; }
-      .term-header { fill: #161b22; }
-      .term-title { fill: #8b949e; font-family: 'Segoe UI', -apple-system, sans-serif; font-size: 11px; font-weight: 500; }
-      .ascii-text {
+    css_rules.append(f"""
+      @keyframes revealWidth {{
+        0% {{ width: 0px; }}
+        100% {{ width: {int(content_w + 10)}px; }}
+      }}
+      .term-bg {{ fill: #0d1117; stroke: #30363d; stroke-width: 1.5; rx: 10px; }}
+      .term-header {{ fill: #161b22; }}
+      .term-title {{ fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; font-weight: 500; }}
+      .ascii-text {{
         fill: #c9d1d9;
         font-family: 'Consolas', 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
         font-size: 8.8px;
         letter-spacing: 0px;
         white-space: pre;
-      }
-    """.replace("__CW__", str(int(content_w + 10))))
+      }}
+    """)
 
     for i, line in enumerate(lines):
         clip_id = f"cp-{i}"
         y_pos = pad_top + i * line_h
-        begin_sec = 0.12 + i * stagger
+        begin_sec = 0.10 + i * stagger
 
         css_rules.append(f"""
       .clip-rect-{i} {{
@@ -108,9 +112,8 @@ def create_ascii_svg(lines: list, output_path: str = "avi-ascii.svg"):
         animation: revealWidth {duration}s cubic-bezier(0.2, 0.0, 0.38, 0.9) {begin_sec:.3f}s forwards;
       }}""")
 
-        # ClipPath com suporte dual: CSS class + SMIL <animate>
         clip_svg = f"""    <clipPath id="{clip_id}">
-      <rect class="clip-rect-{i}" x="{pad_x - 2}" y="{y_pos - 8}" width="0" height="{line_h + 2}">
+      <rect class="clip-rect-{i}" x="{pad_x - 2:.1f}" y="{y_pos - 9:.1f}" width="0" height="{line_h + 2}">
         <animate attributeName="width" from="0" to="{int(content_w + 10)}" dur="{duration}s" begin="{begin_sec:.3f}s" fill="freeze" />
       </rect>
     </clipPath>"""
@@ -118,7 +121,7 @@ def create_ascii_svg(lines: list, output_path: str = "avi-ascii.svg"):
 
         escaped_line = html.escape(line)
         text_el = f"""    <g clip-path="url(#{clip_id})">
-      <text x="{pad_x}" y="{y_pos}" class="ascii-text" xml:space="preserve">{escaped_line}</text>
+      <text x="{pad_x:.1f}" y="{y_pos:.1f}" class="ascii-text" xml:space="preserve">{escaped_line}</text>
     </g>"""
         text_elements.append(text_el)
 
@@ -149,25 +152,27 @@ def create_ascii_svg(lines: list, output_path: str = "avi-ascii.svg"):
   <!-- Header Title -->
   <text x="{svg_w // 2}" y="19" text-anchor="middle" class="term-title">julianotx@terminal ~ portrait.ascii</text>
 
-  <!-- ASCII Lines with typing animation -->
+  <!-- Centered ASCII Lines with typing animation -->
 {texts_str}
 </svg>"""
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(svg_content)
 
-    print(f"[+] ASCII SVG gerado com sucesso: {output_path} ({svg_w}x{svg_h})")
+    print(f"[+] ASCII SVG generated and centered successfully: {output_path} ({svg_w}x{svg_h})")
+
 
 def main():
     img_path = "source-prepped.png"
     out_path = "avi-ascii.svg"
     if not os.path.exists(img_path):
-        print(f"[!] Erro: {img_path} não encontrado. Execute scripts/prep_photo.py primeiro.")
+        print(f"[!] Error: {img_path} not found. Run scripts/prep_photo.py first.")
         sys.exit(1)
 
-    print("[*] Convertendo imagem em ASCII...")
-    lines = generate_ascii_art(img_path, cols=96, rows=53)
+    print("[*] Converting image to centered ASCII art...")
+    lines = generate_ascii_art(img_path, cols=96, rows=56)
     create_ascii_svg(lines, out_path)
+
 
 if __name__ == "__main__":
     main()

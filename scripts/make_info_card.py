@@ -3,11 +3,12 @@
 scripts/make_info_card.py
 Generates the neofetch-style profile information card SVG (info-card.svg).
 
-Reads dynamic GitHub stats from data/github_stats.json (if available) to
-show live repo/follower/star counts. Falls back to static values when the
-stats file is missing (e.g. first local run before the workflow populates it).
-
-All text uses inline fill attributes for maximum GitHub SVG proxy compatibility.
+- Professional English profile data
+- OS: Windows 11 IoT Enterprise / Arch Linux x86_64 (no GitHub branding)
+- No color blocks at the bottom (clean terminal text)
+- Dynamic GitHub stats (Repos, Stars, Followers)
+- All text uses inline fill attributes for maximum GitHub SVG proxy compatibility
+- Height 480px (exact match with ASCII card for pixel-perfect symmetry)
 """
 
 import os
@@ -35,30 +36,27 @@ def generate_info_card_svg(output_path: str = "info-card.svg", is_static: bool =
     followers = stats.get("followers", "3")
     stars_given = stats.get("stars_given", "15")
 
-    # Professional English profile data — NO "Prev" field
+    # Clean profile data without color cards or Prev
     data_items = [
         ("title", "julianotx@github", "#58a6ff"),
-        ("sep",   "-" * 34,           "#30363d"),
-        ("OS",       "GitHub / Windows 11 x86_64",                          "#79c0ff"),
+        ("sep",   "-" * 36,           "#30363d"),
+        ("OS",       "Windows 11 IoT Enterprise / Arch Linux",              "#79c0ff"),
+        ("Host",     "julianotx.vercel.app (Portfolio)",                    "#79c0ff"),
         ("Role",     "System Analyst & Full Stack Developer",               "#7ee787"),
-        ("Degree",   "Associate Degree in System Analysis & Dev",           "#d29922"),
+        ("Degree",   "Associate Degree in System Analysis & Dev (2026)",     "#d29922"),
         ("Location", "Sao Paulo, SP - Brazil",                              "#79c0ff"),
-        ("Stack",    "Next.js, TS, React, Supabase, Python, SQL",           "#a371f7"),
-        ("Focus",    "Full-Stack Apps, Data Pipelines & Automation",        "#58a6ff"),
+        ("Stack",    "Next.js, TypeScript, React, Supabase, Python, SQL",   "#a371f7"),
+        ("Focus",    "Full-Stack Web Apps, Data Pipelines & Automation",    "#58a6ff"),
+        ("Uptime",   "Building scalable systems & great user experiences",  "#79c0ff"),
         ("Shell",    "pwsh 7.6.5 + oh-my-posh",                            "#79c0ff"),
         ("Repos",    str(repos),                                            "#7ee787"),
         ("Stars",    str(stars_given),                                      "#f2cc60"),
         ("Followers", str(followers),                                       "#d2a8ff"),
-        ("Status",   "Open to new opportunities",                           "#56d364"),
+        ("Status",   "Open to Software Engineering & Analyst roles",        "#56d364"),
     ]
 
-    ansi_colors_1 = ["#0d1117", "#ff7b72", "#7ee787", "#f2cc60",
-                     "#79c0ff", "#d2a8ff", "#56d364", "#c9d1d9"]
-    ansi_colors_2 = ["#484f58", "#ffa198", "#56d364", "#e3b341",
-                     "#a5d6ff", "#e2c5ff", "#39d353", "#f0f6fc"]
-
     start_delay = 0.10
-    stagger     = 0.055
+    stagger     = 0.05
     duration    = 0.28
 
     COL_VAL   = "#c9d1d9"
@@ -111,13 +109,13 @@ def generate_info_card_svg(output_path: str = "info-card.svg", is_static: bool =
         <tspan fill="{COL_VAL}">:</tspan>
         <tspan fill="{COL_DIR}">~</tspan>
         <tspan fill="{COL_VAL}"> $ </tspan>
-        <tspan fill="{COL_CMD}">neofetch</tspan>
+        <tspan fill="{COL_CMD}">neofetch --profile</tspan>
       </text>
     </g>""")
 
     # Data rows
     cur_y = 84
-    line_step = 23
+    line_step = 24
 
     for idx, (key, val, col) in enumerate(data_items):
         delay = start_delay + (idx + 1) * stagger
@@ -128,12 +126,12 @@ def generate_info_card_svg(output_path: str = "info-card.svg", is_static: bool =
             body.append(f"""    <g{cls}{sty}>{smil}
       <text x="20" y="{cur_y}" font-weight="700" font-size="13px" fill="{col}">{escaped}</text>
     </g>""")
-            cur_y += 16
+            cur_y += 17
         elif key == "sep":
             body.append(f"""    <g{cls}{sty}>{smil}
       <text x="20" y="{cur_y}" fill="{col}">{escaped}</text>
     </g>""")
-            cur_y += 18
+            cur_y += 19
         else:
             body.append(f"""    <g{cls}{sty}>{smil}
       <text x="20" y="{cur_y}">
@@ -143,26 +141,6 @@ def generate_info_card_svg(output_path: str = "info-card.svg", is_static: bool =
       </text>
     </g>""")
             cur_y += line_step
-
-    # ANSI colour blocks
-    blocks_delay = start_delay + (len(data_items) + 2) * stagger
-    cls, sty, smil = anim_attrs(blocks_delay)
-    bw, bh, bx = 22, 12, 20
-    by1 = cur_y + 12
-    by2 = by1 + bh + 3
-    gap = bw + 4
-
-    rects_1 = " ".join(
-        f'<rect x="{bx + i * gap}" y="{by1}" width="{bw}" height="{bh}" rx="2" fill="{c}"/>'
-        for i, c in enumerate(ansi_colors_1))
-    rects_2 = " ".join(
-        f'<rect x="{bx + i * gap}" y="{by2}" width="{bw}" height="{bh}" rx="2" fill="{c}"/>'
-        for i, c in enumerate(ansi_colors_2))
-
-    body.append(f"""    <g{cls}{sty}>{smil}
-      {rects_1}
-      {rects_2}
-    </g>""")
 
     body_str = "\n".join(body)
 
