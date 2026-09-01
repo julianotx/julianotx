@@ -7,6 +7,10 @@ name: Update profile art
   push:
     branches: [main]
 
+concurrency:
+  group: profile-art
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
