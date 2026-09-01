@@ -210,7 +210,7 @@ def render_heatmap(data: dict, output_path: str = "contrib-heatmap.svg"):
 
   <!-- Footer Stats (Left) -->
   <text x="{grid_left}" y="{leg_y + 9}" class="footer-stat">
-    <tspan class="footer-stat-hl">{formatted_total}</tspan> contribuições no último ano &nbsp;•&nbsp; Streak Atual: <tspan class="footer-stat-hl">{current_streak} dias</tspan> &nbsp;•&nbsp; Recorde: <tspan class="footer-stat-hl">{longest_streak} dias</tspan>
+    <tspan class="footer-stat-hl">{formatted_total}</tspan> contribuições no último ano • Streak Atual: <tspan class="footer-stat-hl">{current_streak} dias</tspan> • Recorde: <tspan class="footer-stat-hl">{longest_streak} dias</tspan>
   </text>
 
   <!-- Legend (Right) -->
