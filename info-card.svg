@@ -118,7 +118,7 @@
       <text x="20" y="360">
         <tspan fill="#f2cc60" font-weight="600">Stars</tspan>
         <tspan fill="#8b949e"> : </tspan>
-        <tspan fill="#c9d1d9">15</tspan>
+        <tspan fill="#c9d1d9">16</tspan>
       </text>
     </g>
     <g class="anim" style="animation: slideIn 0.28s ease 0.80s forwards;"><animate attributeName="opacity" from="0" to="1" dur="0.28s" begin="0.80s" fill="freeze"/><animateTransform attributeName="transform" type="translate" from="0,8" to="0,0" dur="0.28s" begin="0.80s" fill="freeze"/>
