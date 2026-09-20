@@ -1,11 +1,11 @@
 {
   "user": "julianotx",
-  "updated_at": "2026-09-19T11:07:06.549939+00:00",
-  "total_days": 371,
+  "updated_at": "2026-09-20T11:32:09.506155+00:00",
+  "total_days": 365,
   "stats": {
-    "total": 1091,
-    "current_streak": 19,
-    "longest_streak": 19,
+    "total": 1092,
+    "current_streak": 20,
+    "longest_streak": 20,
     "best_day": {
       "date": "2026-08-20",
       "count": 98
@@ -23,45 +23,10 @@
       "2026-06": 23,
       "2026-07": 257,
       "2026-08": 682,
-      "2026-09": 104
+      "2026-09": 105
     }
   },
   "days": [
-    {
-      "date": "2025-09-14",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-09-15",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-09-16",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-09-17",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-09-18",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-09-19",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-09-20",
-      "count": 0,
-      "level": 0
-    },
     {
       "date": "2025-09-21",
       "count": 0,
@@ -1879,6 +1844,11 @@
     },
     {
       "date": "2026-09-19",
+      "count": 1,
+      "level": 1
+    },
+    {
+      "date": "2026-09-20",
       "count": 0,
       "level": 0
     }
